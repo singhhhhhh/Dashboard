@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './Header';
+import Sidebar from './Sidebar';
+import Home from './Home';
+import { useState } from 'react';
+import SignUp from './SignUp';
+import LogIn from './LogIn';
 
 function App() {
+
+  const [openSidebarTogle, setopenSidebarTogle] = useState(false)
+
+  const OpenSidebar= () =>{
+    setopenSidebarTogle(!openSidebarTogle)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+  <Header OpenSidebar={OpenSidebar}/>
+  <Sidebar openSidebarTogle={openSidebarTogle} OpenSidebar={OpenSidebar}/>
+  <Home/>
     </div>
   );
 }
